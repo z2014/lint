@@ -13,6 +13,6 @@ printf '\n===== init hooks =====\n'
 hooks="${projectPath}/.git/hooks/"
 rm -f "${hooks}/pre-commit"
 ln -s ../../.lint/hooks/pre-commit "$hooks"
-chmod -R a+x $hooks
+sudo chmod -R a+x $hooks
 
 printf "\n ==== ALL DONE ===\n"
