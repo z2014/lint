@@ -1,0 +1,53 @@
+#!/bin/sh
+
+JS_FILES=$(git diff --cache --name-only --diff-filter=ACM | grep -E "(\.js?)$")
+CSS_FILES=$(git diff --cache --name-only --diff-filter=ACM | grep -E "(\.p?css)$")
+
+if [[ "$JS_FILES" = "" && "CSS_FILES" = "" ]]; then
+    exit 0
+fi
+
+PASS=true
+
+# jslint
+
+if [[ "$JS_FILES" != "" ]]; then
+    echo "\nValidating Javascript:\n"
+
+    husky lintjs --exitcode $JS_FILES
+
+    if [[ "$? == 0" ]]; then
+        echo "\033[32mESLint Passed\033[0m"
+    else
+        echo "\033[41mESLint Failed\033[0m"
+        PASS=false
+    fi
+
+    echo "\nJavascript validation completed!\n"
+fi
+
+# csslint
+
+if [[ "$CSS_FILES" != "" ]]; then
+  echo "\nValidating css:\n"
+
+  husky lintcss --exitcode $CSS_FILES
+
+  if [[ "$?" == 0 ]]; then
+    echo "\033[32mstylelint Passed\033[0m"
+  else
+    echo "\033[41mstylelint Failed\033[0m"
+    PASS=false
+  fi
+
+  echo "\ncss validation completed!\n"
+fi
+
+if ! $PASS; then
+    echo "\033[41mCOMMIT FAILED:\033[0m Your commit contains files that should pass ESLint and stylelint but do not. Please fix the ESLint and stylelint errors and try again.\n"
+    exit 1
+else 
+    echo "\033[42mCOMMIT SUCCEEDED\033[0m\n"
+fi
+
+exit $?
