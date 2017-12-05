@@ -13,7 +13,7 @@ module.exports = {
         }
     },
     plan: {
-        default: ['.eslintrc_es6.json', '.stylelintrc.json']
+        default: ['.eslintrc.json', '.stylelintrc.json']
     },
     initHooks: 'update_git_hooks.sh'
 }
