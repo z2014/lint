@@ -27,4 +27,4 @@
        // "comma-spacing": [2, { "before": false, "after": true }], // 控制逗号前后的空格
        // "no-mixed-spaces-and-tabs": [2, "false"],//禁止混用tab和空格
     }
-};
+}
