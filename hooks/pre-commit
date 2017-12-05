@@ -16,7 +16,7 @@ if [[ "$JS_FILES" != "" ]]; then
 
     husky lintjs --exitcode $JS_FILES
 
-    if [[ "$? == 0" ]]; then
+    if [[ "$?" == 0 ]]; then
         echo "\033[32mESLint Passed\033[0m"
     else
         echo "\033[41mESLint Failed\033[0m"
