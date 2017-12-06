@@ -10,9 +10,9 @@ my_dir="$(dirname "$0")"
 cd ./.lint/hooks
 
 printf '\n===== init hooks =====\n'
-hooks="${projectPath}/.git/hooks/pre-commit"
+hooks="${projectPath}/.git/hooks/"
 rm -f "${hooks}/pre-commit"
 ln -s ../../.lint/hooks/pre-commit "$hooks"
-chmod +x $hooks
+chmod +x "${hooks}/pre-commit"
 
 printf "\n ==== ALL DONE ===\n"

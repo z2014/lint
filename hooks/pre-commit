@@ -14,7 +14,7 @@ PASS=true
 if [[ "$JS_FILES" != "" ]]; then
     echo "\nValidating Javascript:\n"
 
-    husky lintjs --exitcode $JS_FILES
+    oishi lintjs --exitcode $JS_FILES
 
     if [[ "$?" == 0 ]]; then
         echo "\033[32mESLint Passed\033[0m"
@@ -31,7 +31,7 @@ fi
 if [[ "$CSS_FILES" != "" ]]; then
   echo "\nValidating css:\n"
 
-  husky lintcss --exitcode $CSS_FILES
+  oishi lintcss --exitcode $CSS_FILES
 
   if [[ "$?" == 0 ]]; then
     echo "\033[32mstylelint Passed\033[0m"
